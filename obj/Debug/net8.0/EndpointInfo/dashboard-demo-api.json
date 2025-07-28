@@ -1,0 +1,554 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "dashboard-demo-api",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Dashboard/empresas": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Empresa"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Dashboard/semanas/{empresaId}": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "empresaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semana"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semana"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Semana"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Dashboard/data": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "empresaId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semanas",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardData"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardData"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Dashboard/pages-data": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "empresaId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "semanas",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardPagesData"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardPagesData"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardPagesData"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AreaRiesgoItem": {
+        "type": "object",
+        "properties": {
+          "area": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoria": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "barrera": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BarreraConductual": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "frecuencia": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BarreraEjeX": {
+        "type": "object",
+        "properties": {
+          "barrera": {
+            "type": "string",
+            "nullable": true
+          },
+          "frecuencia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemFrecuencia"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CumplimientoCartilla": {
+        "type": "object",
+        "properties": {
+          "observador": {
+            "type": "string",
+            "nullable": true
+          },
+          "reportadas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "programadas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cumplimiento": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DashboardData": {
+        "type": "object",
+        "properties": {
+          "tendenciaSemanal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TendenciaSemanal"
+            },
+            "nullable": true
+          },
+          "cumplimientoCartillas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CumplimientoCartilla"
+            },
+            "nullable": true
+          },
+          "cumplimientoCartillasJefes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CumplimientoCartilla"
+            },
+            "nullable": true
+          },
+          "barrerasConductuales": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BarreraConductual"
+            },
+            "nullable": true
+          },
+          "pcelData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PcelData"
+            },
+            "nullable": true
+          },
+          "kpi": {
+            "$ref": "#/components/schemas/KpiData"
+          },
+          "pieHorario": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PieData"
+            },
+            "nullable": true
+          },
+          "pieFrente": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PieData"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DashboardPagesData": {
+        "type": "object",
+        "properties": {
+          "tendenciaSemanal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TendenciaCategoria"
+            },
+            "nullable": true
+          },
+          "barrerasConductualesPorBarrera": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BarreraEjeX"
+            },
+            "nullable": true
+          },
+          "areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "categorias": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "itemsPorCategoria": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ItemCategoria"
+              }
+            },
+            "nullable": true
+          },
+          "areaRiesgoData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AreaRiesgoItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Empresa": {
+        "type": "object",
+        "properties": {
+          "seccionID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemCategoria": {
+        "type": "object",
+        "properties": {
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemFrecuencia": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "frecuencia": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "KpiData": {
+        "type": "object",
+        "properties": {
+          "cartillas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "semanas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observadores": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seguro": {
+            "type": "number",
+            "format": "double"
+          },
+          "riesgo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PcelData": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "frecuencia": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PieData": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "porcentaje": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Semana": {
+        "type": "object",
+        "properties": {
+          "semanaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TendenciaCategoria": {
+        "type": "object",
+        "properties": {
+          "categoria": {
+            "type": "string",
+            "nullable": true
+          },
+          "porcentajeSeguras": {
+            "type": "number",
+            "format": "double"
+          },
+          "porcentajeRiesgosas": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TendenciaSemanal": {
+        "type": "object",
+        "properties": {
+          "semana": {
+            "type": "string",
+            "nullable": true
+          },
+          "cartillas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "observadores": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalConductas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seguras": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "riesgosas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "porcentajeSeguras": {
+            "type": "number",
+            "format": "double"
+          },
+          "porcentajeRiesgosas": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

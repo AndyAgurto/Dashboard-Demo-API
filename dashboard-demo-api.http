@@ -1,0 +1,61 @@
+@DashboardDemo_HostAddress = http://localhost:5181
+
+### Obtener lista de empresas
+GET {{DashboardDemo_HostAddress}}/api/dashboard/empresas
+Accept: application/json
+
+###
+
+### Obtener semanas por empresa
+GET {{DashboardDemo_HostAddress}}/api/dashboard/semanas/1
+Accept: application/json
+
+###
+
+### Obtener datos del dashboard (múltiples semanas)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/data?empresaId=1&semanas=1&semanas=2&semanas=3
+Accept: application/json
+
+###
+
+### Obtener datos del dashboard (ejemplo con más semanas)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/data?empresaId=2&semanas=1&semanas=2&semanas=3&semanas=4&semanas=5
+Accept: application/json
+
+###
+
+### Obtener datos de páginas del dashboard (semanas como string separado por comas)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/pages-data?empresaId=1&semanas=1,2,3,4
+Accept: application/json
+
+###
+
+### Obtener datos de páginas del dashboard (ejemplo con más semanas)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/pages-data?empresaId=3&semanas=1,2,3,4,5,6,7,8
+Accept: application/json
+
+###
+
+### Obtener semanas para empresa específica (empresa 2)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/semanas/2
+Accept: application/json
+
+###
+
+### Obtener semanas para empresa específica (empresa 3)
+GET {{DashboardDemo_HostAddress}}/api/dashboard/semanas/3
+Accept: application/json
+
+###
+
+### Ejemplo de petición con error (sin semanas) - debe devolver BadRequest
+GET {{DashboardDemo_HostAddress}}/api/dashboard/data?empresaId=1
+Accept: application/json
+
+###
+
+### Ejemplo de petición con error en pages-data (sin semanas) - debe devolver BadRequest
+GET {{DashboardDemo_HostAddress}}/api/dashboard/pages-data?empresaId=1&semanas=
+Accept: application/json
+
+###

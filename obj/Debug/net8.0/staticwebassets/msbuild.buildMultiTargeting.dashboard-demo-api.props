@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\dashboard-demo-api.props" />
+</Project>

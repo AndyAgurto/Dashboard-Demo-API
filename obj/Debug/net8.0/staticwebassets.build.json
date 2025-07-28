@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "wUVHCEMa4uZl3/YI5SZWpIZF8Q4gC/SsYwPC+4yTlOY=",
+  "Source": "dashboard-demo-api",
+  "BasePath": "_content/dashboard-demo-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
