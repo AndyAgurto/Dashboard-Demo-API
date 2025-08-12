@@ -40,6 +40,7 @@ Consulta el controlador `DashboardController.cs` para ver los endpoints disponib
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para sugerencias o mejoras.
 
 ## Autor y Licencia
-Autor: Andy Agurto Urcia
-Empresa: DEVELOPERS AAU // devopsolutionsa@gmail.com
-Licencia: Propietario, uso interno.
+- Autor: Andy Agurto Urcia. 
+- Empresa: DEVELOPERS AU. 
+- Correo: devopsolutionsa@gmail.com. 
+- Licencia: Propietario, uso interno.
