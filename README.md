@@ -41,6 +41,6 @@ Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para
 
 ## Autor y Licencia
 - Autor: Andy Agurto Urcia. 
-- Empresa: DEVELOPERS AU. 
+- Empresa: AU DEVELOPERS. 
 - Correo: devopsolutionsa@gmail.com. 
 - Licencia: Propietario, uso interno.
